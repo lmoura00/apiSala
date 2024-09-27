@@ -5,8 +5,13 @@ export default class extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-
+      table.increments('id').unique()
+      table.string('data_reserva').notNullable()
+      table.string('hora_inicio').notNullable()
+      table.string('hora_fim').notNullable()
+      table.string('status').notNullable()
+      table.bigInteger("docente_id").unsigned().references('id').inTable('docente').onDelete('SET NULL').onUpdate('CASCADE')
+      table.bigInteger("sala_id").unsigned().references('id').inTable('sala').onDelete('SET NULL').onUpdate('CASCADE')  
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

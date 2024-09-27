@@ -7,13 +7,16 @@ export default class Docente extends BaseModel {
   public id: number
 
   @column()
+  public nome: string
+
+  @column().unique()
   public email: string
 
   @column({ serializeAs: null })
   public password: string
 
   @column()
-  public rememberMeToken: string | null
+  public token: string | null
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
