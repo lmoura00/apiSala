@@ -6,6 +6,8 @@ Route.delete("/session", "SessionsController.destroy").middleware('auth')
 Route.resource("/docentes", "DocentesController").apiOnly()
 Route.group(()=>{
     Route.resource("/salas", "SalasController").apiOnly()
+    Route.resource("/reserva", "ReservasController").apiOnly()
+
 
 
   }

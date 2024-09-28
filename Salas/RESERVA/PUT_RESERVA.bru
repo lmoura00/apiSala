@@ -1,0 +1,23 @@
+meta {
+  name: PUT_RESERVA
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3333/docentes
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: Mg.x_tY3rftioGDYmoqQPZaFnrIhSvFijJJuVRA9xY2-jYBySQJ6e8VvFSav142
+}
+
+body:json {
+  {
+    "nome":"Lucas",
+    "email": "teste@teste.com",
+    "password":"secret"
+  }
+}

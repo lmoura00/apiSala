@@ -1,17 +1,22 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne, HasOne } from '@ioc:Adonis/Lucid/Orm'
-import {Docente} from 'app/models/docente'
-import {Sala} from 'app/models/sala'
-
+import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import Docente from './Docente'
+import Sala from './Sala'
 export default class Reserva extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @hasOne(() => Docente)
-  public docente: HasOne<typeof Docente>
+  @column()
+  public salaId: number
 
-  @hasOne(() => Sala)
-  public sala: HasOne<typeof Sala>
+  @belongsTo(() => Sala)
+  public sala: BelongsTo<typeof Sala>
+
+  @column()
+  public docenteId: number
+
+  @belongsTo(() => Docente)
+  public docente: BelongsTo<typeof Docente>
 
   @column()
   public data_reserva: string
