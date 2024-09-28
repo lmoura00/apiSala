@@ -1,0 +1,22 @@
+meta {
+  name: LOGGOUT_DOCENTE
+  type: http
+  seq: 2
+}
+
+delete {
+  url: http://localhost:3333/session
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: Mg.x_tY3rftioGDYmoqQPZaFnrIhSvFijJJuVRA9xY2-jYBySQJ6e8VvFSav142
+}
+
+body:json {
+  {
+    "email":"teste@teste.com",
+    "password":"secret"
+  }
+}

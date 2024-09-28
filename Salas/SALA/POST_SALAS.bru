@@ -1,0 +1,19 @@
+meta {
+  name: POST_SALAS
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3333/docentes
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome":"Lucas",
+    "email": "teste@teste.com",
+    "password":"secret"
+  }
+}

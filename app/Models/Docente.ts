@@ -9,7 +9,7 @@ export default class Docente extends BaseModel {
   @column()
   public nome: string
 
-  @column().unique()
+  @column()
   public email: string
 
   @column({ serializeAs: null })

@@ -1,0 +1,18 @@
+meta {
+  name: LOGIN_DOCENTE
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3333/session
+  body: json
+  auth: bearer
+}
+
+body:json {
+  {
+    "email":"teste@teste.com",
+    "password":"secret"
+  }
+}
