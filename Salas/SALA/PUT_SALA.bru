@@ -4,16 +4,20 @@ meta {
   seq: 4
 }
 
-post {
-  url: http://localhost:3333/docentes
+put {
+  url: http://localhost:3333/salas/2
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: Mw.hgxqG0mI8gfaiAXNxLIaVbY-dsUX5HoQnHsHc13tcxjxjUOVv9o5IIlG3Qvz
 }
 
 body:json {
   {
-    "nome":"Lucas",
-    "email": "teste@teste.com",
-    "password":"secret"
+    "nome":"02",
+    "capacidade": 20,
+    "descricao":"Sala de aula voltado para TI"
   }
 }

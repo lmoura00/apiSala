@@ -10,6 +10,17 @@ export default class SalasController {
         return Sala.all()
     }
 
+
+  public async show({response, params}: HttpContextContract) {
+    try {
+      const sala = await Sala.findByOrFail('id', params.id)
+      return sala
+    } catch (error) {
+      return response.status(400).json({error: "Sala não encontrado."})
+    }
+  }
+
+
     public async store({ request }) {
         const data = request.only(['nome', 'capacidade', 'descricao'])
         const sala = await Sala.create(data)

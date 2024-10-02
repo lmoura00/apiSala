@@ -5,7 +5,7 @@ export default class extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').unique()
+      table.increments('id').primary()
       table.string('data_reserva').notNullable()
       table.string('hora_inicio').notNullable()
       table.string('hora_fim').notNullable()

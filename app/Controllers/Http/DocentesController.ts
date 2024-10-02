@@ -1,12 +1,13 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Docente from 'App/Models/Docente'
+import Reserva from 'App/Models/Reserva';
 
 
 
 export default class DocentesController {
   public async index({}: HttpContextContract) {
-    const docentes = await Docente.query()
-    return docentes
+    const docentes = await Docente.query().preload('reservas');
+    return docentes;
   }
 
   public async store({request}: HttpContextContract) {
@@ -21,8 +22,9 @@ export default class DocentesController {
 
   public async show({response, params}: HttpContextContract) {
     try {
-      const docente = await Docente.findByOrFail('id', params.id)
-      return docente
+      //const docente = (await Docente.findByOrFail('id', params.id))
+      const classes = await Reserva.query().where('docenteId', params.id)
+      return classes
     } catch (error) {
       return response.status(400).json({error: "Docente não encontrado."})
     }

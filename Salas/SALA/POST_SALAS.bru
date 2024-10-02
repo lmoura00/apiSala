@@ -5,15 +5,19 @@ meta {
 }
 
 post {
-  url: http://localhost:3333/docentes
+  url: http://localhost:3333/salas
   body: json
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: MQ.1yIL0AvO6ItXa1CEqzVaN5mp6Xm2PnVbo0v5x7rtZTEO26NU6xfUBkrtAMt2
 }
 
 body:json {
   {
-    "nome":"Lucas",
-    "email": "teste@teste.com",
-    "password":"secret"
+    "nome":"01",
+    "capacidade": 50,
+    "descricao":"Sala de aula voltado para TI"
   }
 }
