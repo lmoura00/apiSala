@@ -56,14 +56,30 @@ export default class ReservasController {
             return response.status(500).json({ error: 'Erro ao criar reserva.', details: error.message });
         }
     }
+
+    public async show({response, params}: HttpContextContract) {
+        try {
+          const classes = await Reserva.query().where('docenteId', params.id)
+          return classes
+        } catch (error) {
+          return response.status(400).json({error: "Reserva não encontrado."})
+        }
+      }
     
     public async update({response, params}: HttpContextContract) {
       try {
 
         const reserva = await Reserva.findByOrFail('id', params.id)
-        reserva.merge({status:"Inativo"})
-        await reserva.save()
-        return reserva
+        if(reserva.$attributes.status === "ATIVO"){
+            reserva.merge({status:"INATIVO"})
+            await reserva.save()
+            return reserva
+        }
+        else{
+            reserva.merge({status:"ATIVO"})
+            await reserva.save()
+            return reserva
+        }
       } catch (error) {
         return response.status(400).json({error: "Reserva não encontrada"})
       }
